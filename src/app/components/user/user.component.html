@@ -1,0 +1,123 @@
+<div id="area" class="container-fluid">
+  <div class="row justify-content-center contenedor">
+    <div class="col-md-10 text-center">
+      <h3 class="m-2">{{action}} Usuario</h3>
+      <div class="card bg-light mb-2">
+        <div class="card-body">
+          <form [formGroup]="formulario">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group has-float-label">
+                  <label id="labelFirstName" for="idFirstName" class="tamanio-label">FirstName *</label>
+                  <input id="idFirstName" type="text" formControlName="firstName" autocomplete="off"
+                    class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group has-float-label">
+                  <label id="" for="lastName" class="tamanio-label">Last Name*</label>
+                  <input id="lastName" type="text" formControlName="lastName" autocomplete="off"
+                    class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group has-float-label">
+                  <label id="labelUserName" for="idUserName" class="tamanio-label">User name*</label>
+                  <input id="idUserName" type="text" formControlName="username" autocomplete="off"
+                    class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group has-float-label">
+                  <label id="labelMail" for="idMail" class="tamanio-label">Email *</label>
+                  <input id="idMail" type="email" formControlName="email" autocomplete="off"
+                    class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+            <div class="row" *ngIf="userMod==null">
+              <div class="col-md-3">
+                <div class="form-group has-float-label">
+                  <label id="" for="idcontrasenia" class="tamanio-label">Password*</label>
+                  <input id="idcontrasenia" type="password" formControlName="password" autocomplete="off"
+                    [readonly]="readOnly" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group has-float-label">
+                  <label id="" for="idcontraseniaRep" class="tamanio-label">Repeat Pass*</label>
+                  <input id="idcontraseniaRep" type="password" formControlName="confirmPassword" autocomplete="off"
+                    [readonly]="readOnly" class="form-control form-control-sm" (blur)="checkPassword()">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <div class="form-group ">
+                  <div class="form-group has-float-label">
+                      <label for="idRole" class="tamanio-label">Role</label>
+                      <mat-select class="form-control form-control-sm" id="idRole" 
+                      [formControl]="role"  >
+                          <mat-option *ngFor="let role of roles | async" [value]="role"> {{role.name }}</mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2" *ngIf="userMod">
+                  <button type="button" class="btn btn-primary" [disabled]="!formulario.valid"
+                    (click)="updateUser()">Actualizar</button>
+                </div>
+                <div class="col-md-2" *ngIf="userMod">
+                  <button type="button" class="btn btn-secondary"
+                    (click)="resetFields()">Cancelar</button>
+                </div>
+              <div class="col-md-1" *ngIf="userMod==null">
+                <button type="button" class="btn btn-success" [disabled]="!formulario.valid"
+                  (click)="addUser()">Agregar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <table class="table table-borderless">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">User name</th>
+                <th scope="col">Email</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users | async" style="background-color: #f8f9fa;">
+                <th scope="row">{{user.id}}</th>
+                <td><span>{{user.firstName}}</span></td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td>
+                  <button class="mat-icon-button-table" (click)="handleDeleteUser(user)" matTooltip="Consultar"
+                    matTooltipPosition="above">
+                    <span class="material-icons">
+                      delete
+                    </span>
+                  </button>
+                  <button class="mat-icon-button-table margin-left-3" (click)="handleUpdateUser(user)"
+                    matTooltip="Editar" matTooltipPosition="above">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

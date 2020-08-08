@@ -1,1 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~material-design-icons/iconfont/material-icons.css';
+
+// regular style toast 
+@import '~ngx-toastr/toastr';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.has-float-label{position:relative}.has-float-label label{position:absolute;cursor:text;font-size:75%;opacity:1;-webkit-transition:all .2s;transition:all .2s;top:-.5em;left:.75rem;z-index:3;line-height:1;padding:0 1px}.has-float-label label::after{content:" ";display:block;position:absolute;background:#fff;height:2px;top:50%;left:-.2em;right:-.2em;z-index:-1}.has-float-label .form-control::-webkit-input-placeholder{opacity:1;-webkit-transition:all .2s;transition:all .2s}.has-float-label .form-control:placeholder-shown:not(:focus)::-webkit-input-placeholder{opacity:0}.has-float-label .form-control:placeholder-shown:not(:focus)+label{font-size:150%;opacity:.5;top:.3em}.input-group .has-float-label{display:table-cell}.input-group .has-float-label .form-control{border-radius:.25rem}.input-group .has-float-label:not(:last-child) .form-control{border-bottom-right-radius:0;border-top-right-radius:0}.input-group .has-float-label:not(:first-child) .form-control{border-bottom-left-radius:0;border-top-left-radius:0;margin-left:-1px}
+.has-float-label > label {
+    font-size: 15px;
+}
+.mat-raised-button {
+    min-width: 73px !important;
+    line-height: 30px !important;
+  }
+// style for material icons
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px; /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+    }
+    .mat-icon-button-table {
+        padding: 0px !important;
+        min-width: 0px !important;
+        width: 30px !important;
+        height: 30px !important;
+        line-height: 30px !important;
+        border-radius: 50% !important;
+        text-align: left !important;
+      }
